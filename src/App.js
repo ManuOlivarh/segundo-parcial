@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import AgregarDeportes from "./Components/AgregarDeportes";
+import EditarDeportes from "./Components/EditarDeportes";
+import Deportes from "./Components/Deportes";
+import Deporte from "./Components/Deporte";
+import Header from "./Components/Header";
+
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+     
+       <Header/>
+      <Switch>
+     
+     <Route exact path="/deportes" component={Deportes} />
+     
+      <Route exact path="/nuevo-deporte" component={AgregarDeportes} />
+      
+     
+      <Route exact path="/deportes:id" component={Deporte} />
+      <Route exact path="/deportes/editar:id" component={EditarDeportes} />
+      
+      </Switch>
+
+      </Router>
   );
 }
 
